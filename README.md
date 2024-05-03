@@ -1,106 +1,134 @@
-![Logo LyonPalme](/LyonPalme/img/readme_logo.png)
+![Logo LyonPalme](/Images/readme_logo__1_.png)
 
-
-# Gestion de Matériels - LyonPalme
+# Gestion des Adhérents - LyonPalme
 
 ## Sommaire
 
 - [Description](#description)
 - [Technologies Utilisées](#techno)
-- [Diagramme d'activité](#activité)
-- [Schema de la BDD](#BDD)
+- [Diagramme de cas d'utilisation](#utilisation)
+- [Digramme de cas](#bdd)
 - [Prérequis](#prerequis)
 - [Installation](#installation)
-- [Utilisation](#utilisation)
-
+- [Créer le premier user](#premieruser)
+- [Utilisation](#utile)
 
 
 
 ## Description <a id="description"></a>
 
-L'application "LyonPalme - Gestion de Matériels" a pour objectif la gestion efficace du matériel au sein de l'association LyonPalme, tout en offrant une interface conviviale pour sa visualisation. Elle facilite la création et la consultation des prêts, ainsi que la visualisation des membres inscrits à l'association.
+Le club "LyonPalme" est une association sportive de natation avec palmes : monopalme ou bi-palmes. Il compte une quarantaine d'adhérents et son siège est à Saint-Fons. Notre application de gestion des adhérents permet de gérer les comptes des membres du club. Seule la secrétaire est autorisée à créer et à modifier tous les comptes. Les adhérents, quant à eux, peuvent accéder à leur profil une fois leur compte créé et le modifier. Ils peuvent également consulter l'annuaire et le trombinoscope.
+
+
 
 ## Technologies Utilisées <a id="techno"></a>
 
 | **Nom** | **Description** |
 | ------- | ------------- |
-| C# | Langage de programmation orienté objet. |
-| MicrosoftSQLServer | Base de données. |
-| .Net | Framework .Net `6.0`. |
-| Windows | Interface utilisateur avec Windows Forms |
-| Git | Contrôle de version. |
+| ![Laravel](https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white) | Framework. |
+| ![Debian](https://img.shields.io/badge/Debian-D70A53?style=for-the-badge&logo=debian&logoColor=white) | Linux. |
+| ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white) | Utilisation de NodeJS pour NPM. |
+| ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) | Contrôle de version. |
+| ![PHP](https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white) | Language de code. |
+| ![MariaDB](https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white)| Système de gestion de base de données. |
 
 
-## Diagramme d'activité <a id="activité"></a>
 
-![Diagramme d'activité](/LyonPalme/img/activité.png)
+## Diagramme de cas d'utilisation <a id="utilisation"></a>
+
+![Diagramme de cas d'utilisation](/Images/activité.png)
 
 
-## Schema de la BDD <a id="BDD"></a>
+## Base de données <a id="bdd"></a>
 
-![Schema de la BDD](/LyonPalme/img/usecase.png)
+![Base de données](/Images/bdd.png)
+
 
 
 ## Prérequis <a id="prerequis"></a>
-L'application est dépendante d'une base de données. Il faut se connecter au réseau de l'établissement des chassagnes pour pouvoir afficher les données.
+
+Pour exécuter ce projet, vous devez avoir Debian, Apache2, Mariadb, Laravel, NodeJS et Git.
+
+
 
 ## Installation <a id="installation"></a>
 
-Pour installer l'application, suivez les étapes ci-dessous :
+Tout d'abord, vous devez cloner le projet :
 
-1. Clonez le dépôt Git sur votre machine locale.
-2. Ouvrez le projet dans votre environnement de développement intégré (IDE) (Visual studio Code par exemple).
+```git clone https://github.com/Mooodrix/LyonPalme.git```
 
-Vérifiez la présence du App.config à la racine du projet 
-![Logo LyonPalme](/LyonPalme/img/Appconfig.png)
-
-Si il n'y est pas :
-3. Créez un nouveau fichier `App.config` dans le répertoire racine du projet.
-4. Dans le fichier `App.config`, ajoutez le code nécessaire pour configurer l'accès à la base de données. Voici un exemple de ce à quoi pourrait ressembler votre fichier `App.config` :
+Puis vous devez vous placer dans le projet et accorder les droits à deux fichiers en utilisant les commandes ci-dessous. Assurez-vous de remplacer "votreusername" par votre nom d'utilisateur sur votre machine :
 
 ```xml
-<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-	<startup>
-		<supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
-	</startup>
-	<connectionStrings>
-			<add name="sqlserver_creditsio" connectionString="Data Source=192.168.100.236; Initial Catalog=elyesamor;User ID=CBElyes; Password=@pp|iKT1ON!" providerName="System.Data.SqlClient"/>
-</connectionStrings>
-	<runtime>
-		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
-			<dependentAssembly>
-				<assemblyIdentity name="System.Runtime.CompilerServices.Unsafe" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-				<bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
-			</dependentAssembly>
-			<dependentAssembly>
-				<assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
-				<bindingRedirect oldVersion="0.0.0.0-13.0.0.0" newVersion="13.0.0.0" />
-			</dependentAssembly>
-		</assemblyBinding>
-	</runtime>
-</configuration>
+sudo chown -R votreusername:www-data bootstrap/cache/
+sudo chown -R votreusername:www-data storage
+sudo chmod -R 755 bootstrap/cache/
+sudo chmod -R 755 storage/
 ```
 
 
-5. Sur votre interface cliquez sur "projet" en haut et cliquez sur “Publier LyonPalme”. Cela ouvrira une page. Choisissez l'emplacement (Personnellement je l'ai mis directement sur le bureau) puis cliquez sur “Suivant”. Selectionnez CD-ROM et cliquez sur “Suivant”. laissez sur ne pas vérifier les mises à jours et cliquez sur "Suivant". Puis Terminez. 
-Vous avez maintenant l'application .exe. 
-6. Assurez-vous d’être bien connecté au réseau de l’établissement ou utilisez un VPN pour vous y connecter !
+Après cela, vous devrez exécuter les commandes : 
+```xml
+composer install
+npm install
+npm run build
+```
 
-7. Voici donc l'utilisateur pour se connecter à l'application lorsque vous l'avez executer :
+Ensuite, copiez l'exemple de fichier .env et collez-le dans le même emplacement où il est situé, puis remplissez-le comme indiqué ci-dessous :
+
+![.env](/Images/env.png)
+
+Pour la base de données, vous devrez créer un utilisateur SQL et lui accorder des droits en utilisant les commandes suivantes :
+
+```sql
+CREATE DATABASE lyonpalme;
+CREATE USER 'userDuEnv'@localhost IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON lyonpalme.* TO 'userDuEnv'@localhost;
+FLUSH PRIVILEGES
+```
+
+## Créer le premier user <a id="premieruser"></a>
+
+Pour créer le premier utilisateur, vous devez accéder au contrôleur "register" situé ici : 'app/http/controllers/auth/RegisteredUserController.php'. Ensuite, vous devez mettre en commentaire les lignes comme indiqué ci-dessous :
+
+![commentaire](/Images/commentaire.png)
+
+Rendez-vous sur ce lien pour créer votre compte président :
+
+https://slam24-chassagnes.fr/register
+
+Ou si vous êtes en local :
+
+http://localhost/register
+
+Une fois le compte créé, retournez dans le contrôleur "register" et enlevez les commentaires, puis enregistrez.
+
+
+
+## Utilisation <a id="utile"></a>
+
+Une fois l'installation terminée, vous pouvez vous connecter à l'application en utilisant les identifiants créés juste avant. Une fois connecté, vous pourrez y retrouver :
+
+- L’accès a la modification de tout le compte.
+- Trombinoscope.
+- L'Annuaire.
+- Création de comptes.
+
+Ensuite, placez-vous dans le projet et exécutez la commande :
+
+```xml
+php artisan migrate
+```
+
+Ensuite, exécutez la commande ```npm run build```, démarrez le serveur Apache2 avec la commande ```sudo service apache2 start``` et vérifiez que votre serveur MariaDB est toujours en cours d'exécution. Après cela, vous pourrez accéder à l'application et vous connecter avec l'utilisateur que vous avez créé.
+
+L'application étant déjà hébergée, vous pourrez vous connecter avec les identifiants suivants :
 
 | **Login** | **Mot de passe** |
 | ------- | ------------- |
-| elyes | amor |
+| admin@gmail.com | C1Secret! |
 
 
-
-## Utilisation <a id="utilisation"></a>
-
-Pour utiliser l'application, il faut tout d'abord s'y connecter et seul l'administrateur le peut. Lorsqu'il se connecte, il se retrouve sur la page d'accueil où il retrouvera 3 boutons : 
-- Voir les prêts, le stock de materiel disponible et ajouter un prêt.
-- Recup Matériel pour récupérer les matériel et effacer un prêt.
-- Tous les Materiels pour afficher la liste de chaque matériel (en comptant ceux prêtés) et ajouter un nouveau materiel (dont combinaison et monopalme).
 
 
 
